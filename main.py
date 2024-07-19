@@ -30,11 +30,14 @@ def cipher(text_input, shift_num, selection):
     if selection == 'decode':
             shift_num *= -1
     
-    for letter in text_input:
-        position = alphabet.index(letter)
-        new_position = (position + shift_num) % 26
-        new_letter = alphabet[new_position]
-        text_result += new_letter
+    for char in text_input:
+        if char in alphabet:
+            position = alphabet.index(char)
+            new_position = (position + shift_num) % 26
+            new_letter = alphabet[new_position]
+            text_result += new_letter
+        else:
+            text_result += char
     print(f"The {selection}d text is {text_result}.")
     
 # choice to restart the game
