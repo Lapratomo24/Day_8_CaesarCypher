@@ -22,5 +22,18 @@ alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
 print("Welcome to Caesar Cipher!")
 direction = input("Type 'encode' to encrypt or 'decode' to decrypt\n").lower()
 text = input("Type your message:\n")
-shift = input("Type the shift number:\n")
+shift = int(input("Type the shift number:\n"))
 
+# game logic
+
+def encrypt(text_input, shift_num):
+    encoded_text = ""
+    
+    for letter in text_input:
+        position = alphabet.index(letter)
+        new_position = position + shift_num
+        new_letter = alphabet[new_position]
+        encoded_text += new_letter
+    print(f"The encoded text is {encoded_text}")
+        
+encrypt(text, shift)
