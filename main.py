@@ -19,34 +19,25 @@ a8"     "" 88 88P'    "8a 88P'    "8a a8P_____88 88P'   "Y8
 alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 
             'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
+print(logo)
 print("Welcome to Caesar Cipher!")
-direction = input("Type 'encode' to encrypt or 'decode' to decrypt\n").lower()
+selection = input("Type 'encode' to encrypt or 'decode' to decrypt\n").lower()
 text = input("Type your message:\n")
 shift = int(input("Type the shift number:\n"))
 
 # game logic
 
-def encrypt(text_input, shift_num):
-    encoded_text = ""
+def cipher(text_input, shift_num, selection):
+    text_result = ""
+    
+    if selection == 'decode':
+            shift_num *= -1
     
     for letter in text_input:
         position = alphabet.index(letter)
         new_position = (position + shift_num) % 26
         new_letter = alphabet[new_position]
-        encoded_text += new_letter
-    print(f"The encoded text is {encoded_text}.")
-        
-def decrypt(text_input, shift_amount):
-    decoded_text = ""
-    
-    for letter in text_input:
-        position = alphabet.index(letter)
-        new_position = (position - shift_amount) % 26
-        new_letter = alphabet[new_position]
-        decoded_text += new_letter
-    print(f"The decoded text is {decoded_text}.")
+        text_result += new_letter
+    print(f"The {selection}d text is {text_result}.")
 
-if direction == 'encode':
-    encrypt(text, shift)
-elif direction == 'decode':
-    decrypt(text, shift)
+cipher(text, shift, selection)
