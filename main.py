@@ -21,9 +21,6 @@ alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
 
 print(logo)
 print("Welcome to Caesar Cipher!")
-selection = input("Type 'encode' to encrypt or 'decode' to decrypt\n").lower()
-text = input("Type your message:\n")
-shift = int(input("Type the shift number:\n"))
 
 # game logic
 
@@ -39,5 +36,19 @@ def cipher(text_input, shift_num, selection):
         new_letter = alphabet[new_position]
         text_result += new_letter
     print(f"The {selection}d text is {text_result}.")
+    
+# choice to restart the game
 
-cipher(text, shift, selection)
+game_over = False
+
+while not game_over:
+    selection = input("Type 'encode' to encrypt or 'decode' to decrypt\n").lower()
+    text = input("Type your message:\n")
+    shift = int(input("Type the shift number:\n"))
+
+    cipher(text, shift, selection)
+    
+    restart = input("Do you want to restart? Type 'yes' or 'no'\n").lower()
+    if restart == 'no':
+        game_over = True
+        print("Thanks for playing!")
