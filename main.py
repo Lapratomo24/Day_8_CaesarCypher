@@ -34,6 +34,18 @@ def encrypt(text_input, shift_num):
         new_position = position + shift_num
         new_letter = alphabet[new_position]
         encoded_text += new_letter
-    print(f"The encoded text is {encoded_text}")
+    print(f"The encoded text is {encoded_text}.")
         
 encrypt(text, shift)
+
+def decrypt(text_input, shift_amount):
+    decoded_text = ""
+    
+    for letter in text_input:
+        position = alphabet.index(letter)
+        new_position = position - shift_amount
+        new_letter = alphabet[new_position]
+        decoded_text += new_letter
+    print(f"The decoded text is {decoded_text}.")
+
+decrypt(text, shift)
